@@ -189,8 +189,9 @@ public class WebViewActivity extends AppCompatActivity {
             WebViewActivity activity = mActivity.get();
             if (activity == null) return;
             Log.d("wbin", "title: " + title);
-            activity.postEntity.setTitle(title);
-
+            if (!activity.mGroup.equals("TouTiao")) {
+                activity.postEntity.setTitle(title);
+            }
             super.onReceivedTitle(view, title);
         }
     }
@@ -211,6 +212,7 @@ public class WebViewActivity extends AppCompatActivity {
 
         @Override
         public void onLoadResource(WebView view, String url) {
+            //Log.d("wbin", "-----------------\n" + url);
             WebViewActivity activity = mActivity.get();
             if (activity == null) return;
 
@@ -218,6 +220,8 @@ public class WebViewActivity extends AppCompatActivity {
             if (activity.mGroup.equals("Baidu") && url.contains("baiduboxapp://utils?action")) {
                 isGetLink = true;
             } else if (activity.mGroup.equals("UC") && url.contains("uclink://")) {
+                isGetLink = true;
+            } else if (activity.mGroup.equals("TouTiao") && url.contains("snssdk143://")) {
                 isGetLink = true;
             }
 
