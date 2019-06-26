@@ -225,6 +225,8 @@ public class WebViewActivity extends AppCompatActivity {
                 isGetLink = true;
             }else if (activity.mGroup.equals("DouYin") && url.contains("snssdk1128://")) {
                 isGetLink = true;
+            }else if (activity.mGroup.equals("YouKu") && url.contains("youku://")) {
+                isGetLink = true;
             }
 
             if (isGetLink) {
